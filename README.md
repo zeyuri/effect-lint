@@ -916,6 +916,10 @@ npm login
 npm publish --access public
 ```
 
+## Credits
+
+All rules are ported from [`@codeforbreakfast/eslint-effect`](https://github.com/CodeForBreakfast/eventsourcing/tree/main/packages/eslint-effect) by [CodeForBreakfast](https://github.com/CodeForBreakfast). This project re-implements them as an Oxlint JS plugin.
+
 ## License
 
 MIT
