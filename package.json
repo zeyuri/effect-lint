@@ -1,0 +1,39 @@
+{
+  "name": "@zeyuri/effect-lint",
+  "version": "0.1.0",
+  "description": "Oxlint JS plugin for Effect lint rules (alternative API)",
+  "type": "module",
+  "license": "MIT",
+  "author": "zeyuri",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeyuri/effect-lint.git"
+  },
+  "keywords": [
+    "oxlint",
+    "eslint",
+    "eslint-plugin",
+    "effect",
+    "effect-ts",
+    "functional-programming",
+    "typescript",
+    "linting"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./rules": "./src/rules/index.js",
+    "./configs": "./src/configs.js"
+  },
+  "files": [
+    "src",
+    "configs",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "bun test tests/run-oxlint.test.mjs"
+  },
+  "dependencies": {
+    "oxlint": "^1.42.0"
+  }
+}
