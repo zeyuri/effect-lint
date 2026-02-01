@@ -157,6 +157,13 @@ const pipeStrictRulesOnly = {
   ...pipeStrictRules,
 };
 
+// Testing-specific rules for @effect/vitest
+const testingRules = {
+  'effect/no-runPromise-in-tests': 'error',
+  'effect/no-runSync-in-tests': 'error',
+  'effect/prefer-effect-assertions': 'warn',
+};
+
 // Exported configs
 export const pluginRules = () => ({
   name: '@zeyuri/effect-lint/plugin',
@@ -186,4 +193,9 @@ export const preferMatch = () => ({
 export const pipeStrict = () => ({
   name: '@zeyuri/effect-lint/pipe-strict',
   rules: pipeStrictRulesOnly,
+});
+
+export const testing = () => ({
+  name: '@zeyuri/effect-lint/testing',
+  rules: testingRules,
 });

@@ -46,6 +46,7 @@ Prebuilt configs are available in `configs/`:
 - `configs/prefer-match.json` - Forbid direct `_tag` access, `switch`, and `if` statements
 - `configs/pipe-strict.json` - Strict pipe composition rules
 - `configs/plugin.json` - Plugin rules only, no core Effect restrictions
+- `configs/testing.json` - Test-specific rules for `@effect/vitest`
 
 Example:
 
@@ -852,6 +853,62 @@ Effect.map((x) => handler(x as MyType));
 pipe(input, Effect.flatMap(Schema.decodeUnknown(MyTypeSchema)), Effect.map(handler));
 ```
 
+### Testing Rules
+
+#### `effect/no-runPromise-in-tests`
+
+Forbid `Effect.runPromise()` in test files. Use `it.effect()` from `@effect/vitest` instead.
+
+| | |
+| --- | --- |
+| Type | problem |
+| Configs | `testing` |
+
+```typescript
+// bad
+it("does something", () => Effect.runPromise(myEffect));
+
+// good
+it.effect("does something", () => myEffect);
+```
+
+#### `effect/no-runSync-in-tests`
+
+Forbid `Effect.runSync()` in test files. Use `it.effect()` from `@effect/vitest` instead.
+
+| | |
+| --- | --- |
+| Type | problem |
+| Configs | `testing` |
+
+```typescript
+// bad
+it("does something", () => Effect.runSync(myEffect));
+
+// good
+it.effect("does something", () => myEffect);
+```
+
+#### `effect/prefer-effect-assertions`
+
+Forbid wrapping `expect()` or `assert*()` calls in `Effect.sync()`. Use assertions from `@effect/vitest` instead.
+
+| | |
+| --- | --- |
+| Type | suggestion |
+| Configs | `testing` |
+
+```typescript
+// bad
+Effect.sync(() => expect(value).toBe(42));
+Effect.sync(() => assertEquals(a, b));
+
+// good - use @effect/vitest assertions
+assertEqual(value, 42);
+expectSome(option);
+expectTrue(condition);
+```
+
 ### Platform API Rules
 
 #### `effect/prefer-effect-platform`
@@ -893,6 +950,14 @@ Opt-in: forbids direct `_tag` access, all `switch` statements, and all `if` stat
 ### `pipeStrict`
 
 Opt-in: forbids nested pipes and single-use intermediate Effect variables.
+
+### `testing`
+
+**For test files using `@effect/vitest`.** Forbids `Effect.runPromise()`/`Effect.runSync()` in tests (use `it.effect()` instead) and discourages wrapping assertions in `Effect.sync()` (3 rules).
+
+```bash
+oxlint --config node_modules/@zeyuri/effect-lint/configs/testing.json tests
+```
 
 ### `plugin`
 

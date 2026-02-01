@@ -8,6 +8,7 @@ import {
   noGen,
   preferMatch,
   pipeStrict,
+  testing,
 } from './configs.js';
 
 const plugin = definePlugin({
@@ -26,6 +27,7 @@ const configs = {
   noGen: noGen(),
   preferMatch: preferMatch(),
   pipeStrict: pipeStrict(),
+  testing: testing(),
 };
 
 export { rules, functionalImmutabilityRules };

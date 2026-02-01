@@ -38,6 +38,9 @@ import preferGetOrElse from './prefer-get-or-else.js';
 import preferGetOrNull from './prefer-get-or-null.js';
 import preferGetOrUndefined from './prefer-get-or-undefined.js';
 import preferSucceedNone from './prefer-succeed-none.js';
+import noRunPromiseInTests from './no-runPromise-in-tests.js';
+import noRunSyncInTests from './no-runSync-in-tests.js';
+import preferEffectAssertions from './prefer-effect-assertions.js';
 
 export default {
   'no-unnecessary-pipe-wrapper': noUnnecessaryPipeWrapper,
@@ -80,4 +83,7 @@ export default {
   'prefer-get-or-null': preferGetOrNull,
   'prefer-get-or-undefined': preferGetOrUndefined,
   'prefer-succeed-none': preferSucceedNone,
+  'no-runPromise-in-tests': noRunPromiseInTests,
+  'no-runSync-in-tests': noRunSyncInTests,
+  'prefer-effect-assertions': preferEffectAssertions,
 };
